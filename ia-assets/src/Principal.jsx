@@ -22,6 +22,7 @@ function Principal() {
         <button id="btn" onClick={lidarComClique}>1</button>
         
         <textarea name="msg" id="msg" className="msg" placeholder="Descreva seu asset e deixe a ia criar: "></textarea>
+        <button className="enviar" id="enviar">Enviar</button>
       </div>
     </>
   )

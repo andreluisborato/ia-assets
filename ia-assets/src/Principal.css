@@ -58,3 +58,18 @@ body {
 .animar-texto {
   animation: aparecer 0.5s ease-out forwards;
 }
+
+.enviar {
+  background-color: #1f8dec;
+  outline: none;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 10px;
+  width: 100px;
+  border-radius: 20px;
+  font-weight: bold; 
+  font-size: 15px;
+  position: absolute;
+  left: 1125px;
+  bottom: 45px;
+}
