@@ -15,7 +15,7 @@ function Principal() {
 
   return (
     <>
-      <div className="container">
+      <div className="flex flex-col items-end gap-2">
 
          {texto && <h1 className="txt animar-texto">{texto}</h1>}
         
@@ -23,6 +23,10 @@ function Principal() {
         
         <textarea name="msg" id="msg" className="msg" placeholder="Descreva seu asset e deixe a ia criar: "></textarea>
         <button className="enviar" id="enviar">Enviar</button>
+        
+        <button id="microfone" className="bg-[#1f8dec] text-white font-bold flex items-center border-2 border-[#ffffff] rounded-[20px] p-2.5 w-25 justify-center">
+          Gravar
+        </button>
       </div>
     </>
   )
