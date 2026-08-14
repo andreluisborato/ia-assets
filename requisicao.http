@@ -1,0 +1,13 @@
+POST https://api.groq.com/openai/v1/chat/completions HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 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
+
+{
+  "model": "llama-3.3-70b-versatile",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Crie uma descrição de uma poção mágica para jogo."
+    }
+  ]
+}

@@ -12,8 +12,25 @@ export async function enviar(mensagem) {
             'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-            
+            model: 'llama-3.3-70b-versatile',
+            messages: [{
+                role: 'system',
+                content: 'Você é um assistente especialista em criação de assets para jogos e design.'
+            },
+            {
+                role: 'user',
+                content: mensagem
+            }
+            ]
         })
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+        throw new Error(data.error.message);
     }
-    )
+
+    return data.choices[0]?.message?.content || "Sem resposta";
+
 }

@@ -3,11 +3,12 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './Principal.css'
+import { enviarParaGroq } from '../api/groq'
 
 function Principal() {
   const [texto, setTexto] = useState('');
 
-  function lidarComClique() {
+  function Clique() {
     const nome = "André";
     setTexto(`Olá, ${nome}`);
   }
@@ -28,7 +29,7 @@ function Principal() {
 
         <button 
           id="btn" 
-          onClick={lidarComClique}
+          onClick={Clique}
           className="bg-white/20 hover:bg-white/30 text-white font-bold py-2 px-6 rounded-full transition-all">
           1
         </button>
