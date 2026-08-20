@@ -1,9 +1,13 @@
-export async function enviar(mensagem) {
-    const apiKey = import.meta.env.API_KEY;
+// api/groq.js
 
-    if (!apiKey) {
-        throw new Error("Chave de ia não encontrada");
+export async function enviar(mensagem) {
+    const rawKey = import.meta.env.VITE_GROQ_API_KEY;
+
+    if (!rawKey) {
+        throw new Error("Chave VITE_GROQ_API_KEY não encontrada no arquivo .env");
     }
+
+    const apiKey = rawKey.trim();
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
@@ -12,25 +16,25 @@ export async function enviar(mensagem) {
             'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
-            messages: [{
-                role: 'system',
-                content: 'Você é um assistente especialista em criação de assets para jogos e design.'
-            },
-            {
-                role: 'user',
-                content: mensagem
-            }
+            model: 'openai/gpt-oss-120b',
+            messages: [
+                {
+                    role: 'system',
+                    content: 'Você é um assistente especialista em programação e assets para jogos. Se o usuário pedir um código, estrutura de dados ou script, retorne APENAS o código/conteúdo puro, sem saudações ou explicações.'
+                },
+                {
+                    role: 'user',
+                    content: mensagem
+                }
             ]
         })
     });
 
     const data = await response.json();
 
-    if (data.error) {
-        throw new Error(data.error.message);
+    if (!response.ok || data.error) {
+        throw new Error(data.error?.message || `Erro HTTP ${response.status}`);
     }
 
     return data.choices[0]?.message?.content || "Sem resposta";
-
 }

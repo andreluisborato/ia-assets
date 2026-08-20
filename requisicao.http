@@ -1,13 +1,16 @@
-POST https://api.groq.com/openai/v1/chat/completions HTTP/1.1
+POST https://api.anthropic.com/v1/messages HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer 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
+x-api-key: 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
+anthropic-version: 2023-06-01
 
 {
-  "model": "llama-3.3-70b-versatile",
+  "model": "claude-3-5-sonnet-20241022",
+  "max_tokens": 1024,
+  "system": "Você é um assistente especialista em criação de assets para jogos.",
   "messages": [
     {
       "role": "user",
-      "content": "Crie uma descrição de uma poção mágica para jogo."
+      "content": "Crie uma descrição detalhada de um carro de corrida"
     }
   ]
 }
